@@ -1,0 +1,28 @@
+name: Generate MD5 Checksum
+
+on:
+  push:
+    paths:
+      - 'blacklisturl.txt'  # Only runs when this file changes
+
+jobs:
+  generate-md5:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write  # Needed to commit back to the repo
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Generate MD5 file
+        run: md5sum blacklisturl.txt | awk '{print $1}' > blacklist.txt.md5
+
+      - name: Commit and push MD5 file
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add blacklist.txt.md5
+          git diff --staged --quiet || git commit -m "Auto-update MD5 checksum [skip ci]"
+          git push
