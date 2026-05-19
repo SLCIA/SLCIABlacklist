@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Generate MD5 file
-        run: md5sum blacklisturl.txt | awk '{print $1}' > blacklist.txt.md5
+        run: md5sum blacklisturl.txt | awk '{print $1}' > blacklisturl.txt.md5
 
       - name: Commit and push MD5 file
         run: |
