@@ -651,3 +651,4 @@ https://zyroaim.com/downloads/ZyroAim-CS2.exe
 https://zyroaim.com/downloads/ZyroAim-Fortnite.exe
 https://zyroaim.com/downloads/ZyroAim-Valorant.exe
 tcp://bawi-63475.portmap.host:63475/
+http://61.53.74.182:48924/i
